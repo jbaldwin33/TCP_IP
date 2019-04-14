@@ -1,0 +1,65 @@
+﻿<Window x:Class="CodingChallengeV2Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodingChallengeV2Client"
+        mc:Ignorable="d"
+        Title="Coding Challenge" Height="480" MinHeight="480" Width="655" MinWidth="655" WindowStartupLocation="CenterScreen">
+  <Window.Resources>
+    <Style TargetType="TextBox">
+      <Setter Property="Margin" Value="4" />
+      <Setter Property="HorizontalAlignment" Value="Left" />
+      <Setter Property="Height" Value="23" />
+      <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+    <Style TargetType="Button">
+      <Setter Property="Margin" Value="4" />
+      <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    <Style TargetType="Label">
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+  </Window.Resources>
+  <Grid Margin="8">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Label Content="Test data size:" />
+    <StackPanel Grid.Column="1" Orientation="Horizontal">
+      <TextBox x:Name="txtTestDataSize" Text="250000" Width="62" />
+      <Label Content="(bytes)" />
+    </StackPanel>
+    <Button Grid.Row="1" Grid.Column="1" x:Name="btnGenerateNewTestData" Content="Reset and generate new test data" Width="227" Click="btnGenerateTestData_Click" Margin="4,4,4,32"/>
+    <Label Grid.Row="2" x:Name="lblHostname" Content="Hostname:" />
+    <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtServerHostname" Text="codingchallenge.identityone.net" Width="379"/>
+    <Label Grid.Row="3" x:Name="lblPort" Content="Port:"/>
+    <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtServerPort" Text="4544" Width="62"/>
+    <Label Grid.Row="4" Content="Timeout:" />
+    <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+      <TextBox x:Name="txtTimeout" Text="3000" Width="62"/>
+      <Label Content="(ms)" />
+    </StackPanel>
+    <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,8">
+      <Button x:Name="btnEncodeData" Content="Encode Data" Width="152" Click="btnEncryptData_Click"/>
+      <Button x:Name="btnDecodeData" Content="Decode Data" Width="152" Click="btnDecryptData_Click"/>
+    </StackPanel>
+    <Label Grid.Row="6" Content="Encode/Decode:" />
+    <Label Grid.Row="6" Grid.Column="1" x:Name="lblEncodeCycleCount" Content="0" />
+    <DockPanel Grid.Row="7" Grid.ColumnSpan="2" Margin="0,16,0,0">
+      <Label Content="Status:" DockPanel.Dock="Top"/>
+      <ListView x:Name="lstStatus" Margin="4,0,4,4"/>
+    </DockPanel>
+  </Grid>
+</Window>
